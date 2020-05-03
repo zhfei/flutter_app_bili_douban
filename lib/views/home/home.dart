@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_bili_douban/modles/home_modle.dart';
 import 'package:flutter_app_bili_douban/network/HttpRequest.dart';
+import 'package:flutter_app_bili_douban/views/home/subCmpts.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -54,8 +55,7 @@ class _HomeBodyState extends State<HomeBody> {
   Widget build(BuildContext context) {
     return ListView.builder(itemBuilder: (BuildContext, index) {
       MovieItem item = this.items[index];
-      return ListTile(leading: Image.network(item.images.large),title: Text(item.title),
-      );
+      return MovieItemWidget(item);
     },
       itemCount: this.items.length,
     );
