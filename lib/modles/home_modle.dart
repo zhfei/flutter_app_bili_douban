@@ -44,6 +44,7 @@ class MovieCast {
 }
 
 class MovieItem {
+  int rateNum;
   String title;
   String id;
   String alt;

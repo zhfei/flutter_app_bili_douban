@@ -55,6 +55,7 @@ class _HomeBodyState extends State<HomeBody> {
   Widget build(BuildContext context) {
     return ListView.builder(itemBuilder: (BuildContext, index) {
       MovieItem item = this.items[index];
+      item.rateNum = index+1;
       return MovieItemWidget(item);
     },
       itemCount: this.items.length,
