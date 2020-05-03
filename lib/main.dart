@@ -18,21 +18,21 @@ class MyApp extends StatelessWidget {
         splashColor: Colors.transparent
       ),
 
-      home: MyAppHome(),
+      home: MyStackPage(),
     );
   }
 }
 
 /// Body
-class MyAppHome extends StatefulWidget {
+class MyStackPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return MyAppBodyState();
+    return MyStackPageState();
   }
 }
 
-class MyAppBodyState extends State<MyAppHome> {
+class MyStackPageState extends State<MyStackPage> {
   int _currentInt = 0;
 
   @override
@@ -56,8 +56,21 @@ class MyAppBodyState extends State<MyAppHome> {
         },
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text("主页")
+              icon: Stack(
+                children: <Widget>[
+                  Icon(Icons.home),
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    child: Container(
+                      color: Colors.red,
+                      width: 15,
+                      alignment: Alignment(0, 0),
+                      child: Text("7", style: TextStyle(color: Colors.white),),
+                  ))
+                ],
+              ),
+              title: Text("主页"),
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.category),
