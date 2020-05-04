@@ -41,6 +41,12 @@ class MovieCast {
     this.name_en = json["name_en"];
     this.avatars = MovieAvatar.fromMap(json["avatars"]);
   }
+
+  @override
+  String toString() {
+    // TODO: implement toString
+    return name;
+  }
 }
 
 class MovieItem {

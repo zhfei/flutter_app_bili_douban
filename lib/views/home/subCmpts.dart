@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app_bili_douban/components/dotted_line.dart';
 import 'package:flutter_app_bili_douban/modles/home_modle.dart';
 
 class MovieItemWidget extends StatelessWidget {
@@ -50,10 +51,8 @@ class MovieItemWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         getContentImage(),
-        Expanded(
-            child: Text("内容显示")
-        ),
-        Text("分割线显示"),
+        getContentWidget(),
+        getDottedLineWidget(),
         getContentWish(),
       ],
     );
@@ -66,7 +65,52 @@ class MovieItemWidget extends StatelessWidget {
       child: Image.network(item.images.small, height: 150,));
   }
 
-  // 2.4想要展示
+  // 2.2内容介绍展示
+  Widget getContentWidget() {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            getContentTitle(),
+            Text("电影评分"),
+            getContentIntroduceWidget(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // 2.2.1电影标题
+  Widget getContentTitle() {
+    return Stack(
+      children: <Widget>[
+        Icon(Icons.play_circle_outline,size: 25, color: Colors.red,),
+        Text.rich(
+          TextSpan(
+            children: <InlineSpan>[
+              TextSpan(text: "      " + item.title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+              TextSpan(text: "(${item.year})", style: TextStyle(fontSize: 16, color: Colors.black54),),
+            ],
+          ),
+
+//          TextSpan(text: item.title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+
+        ),
+      ],
+    );
+  }
+
+  Widget getContentIntroduceWidget() {
+    String genresString =  item.genres.join(" ");
+    String directorsString =  item.directors.join(" ");
+    String castsString =  item.casts.join(" ");
+
+    return Text("${genresString} / ${directorsString} / ${castsString}", maxLines: 2, overflow: TextOverflow.ellipsis,);
+  }
+
+  // 2.3想要展示
   Widget getContentWish() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 30),
@@ -77,6 +121,21 @@ class MovieItemWidget extends StatelessWidget {
 
           Text("想看", style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 219,	167,	61),)),
         ],
+      ),
+    );
+  }
+
+  // 2.4分割线
+  Widget getDottedLineWidget() {
+    return Container(
+      width: 2,
+      height: 100,
+      child: DottedLine(
+        dottedAxis: Axis.vertical,
+        dottedColor: Color(0xffe0e0e0),
+        dottedHight: 8,
+        dottedWidth: 2,
+        count: 8,
       ),
     );
   }
