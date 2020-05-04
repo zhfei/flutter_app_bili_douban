@@ -20,9 +20,9 @@ class MovieItemWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           getRateWidget(),
-          SizedBox(width: 10,),
-          Text("2"),
-          SizedBox(width: 10,),
+          SizedBox(height: 10,),
+          getOrginalWidget(),
+          SizedBox(height: 10,),
           getOrigalWidget(),
         ],
       ),
@@ -38,13 +38,50 @@ class MovieItemWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        color: Colors.blue
+        color: Color.fromARGB(255, 219,	167,	61)
       ),
-      child: Text("NO.${item.rateNum}", style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold),),
+      child: Text("NO.${item.rateNum}", style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold),),
     );
   }
 
-  // 2.获取origin电影名称
+  // 2.获取中间内容widget
+  Widget getOrginalWidget() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        getContentImage(),
+        Expanded(
+            child: Text("内容显示")
+        ),
+        Text("分割线显示"),
+        getContentWish(),
+      ],
+    );
+  }
+
+  // 2.1图片展示
+  Widget getContentImage() {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(5),
+      child: Image.network(item.images.small, height: 150,));
+  }
+
+  // 2.4想要展示
+  Widget getContentWish() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 30),
+      child: Column(
+        children: <Widget>[
+          Image.asset("assets/home/xiangkan_selected.png", width: 36,),
+          SizedBox(height: 5,),
+
+          Text("想看", style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 219,	167,	61),)),
+        ],
+      ),
+    );
+  }
+
+  // 3.获取origin电影名称
   Widget getOrigalWidget() {
     return Container(
       padding: EdgeInsets.all(10),

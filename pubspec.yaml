@@ -54,6 +54,7 @@ flutter:
    - assets/tabbar/subject_selected.png
    - assets/tabbar/mail_selected.png
    - assets/tabbar/profile_selected.png
+   - assets/home/xiangkan_selected.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
