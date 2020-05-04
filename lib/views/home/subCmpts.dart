@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_app_bili_douban/components/dotted_line.dart';
+import 'package:flutter_app_bili_douban/components/star_rating.dart';
 import 'package:flutter_app_bili_douban/modles/home_modle.dart';
 
 class MovieItemWidget extends StatelessWidget {
@@ -74,7 +75,7 @@ class MovieItemWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             getContentTitle(),
-            Text("电影评分"),
+            getContentRating(),
             getContentIntroduceWidget(),
           ],
         ),
@@ -98,6 +99,20 @@ class MovieItemWidget extends StatelessWidget {
 //          TextSpan(text: item.title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
 
         ),
+      ],
+    );
+  }
+  
+  // 2.2.2电影评分
+  Widget getContentRating() {
+    return Row(
+      children: <Widget>[
+        StarRating(
+         rating: item.rating.average,
+          maxRating: item.rating.max,
+          selectedColor: Colors.orange,
+        ),
+        Text("${item.rating.average}")
       ],
     );
   }
