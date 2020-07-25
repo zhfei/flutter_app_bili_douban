@@ -9,7 +9,8 @@ class MovieRating {
     this.stars = json["stars"];
     this.max = json["max"];
     this.min = json["min"];
-    this.average = json["average"];
+
+    this.average = (json["average"]).toDouble();
   }
 
 }

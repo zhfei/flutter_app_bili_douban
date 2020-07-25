@@ -31,7 +31,7 @@ class _HomeBodyState extends State<HomeBody> {
     super.initState();
 
     /// 在initState方法中发生网络请求
-    HttpRequest.request("https://douban.uieee.com/v2/movie/top250?start=0&count=20").then((response) {
+    HttpRequest.request("http://api.douban.com/v2/movie/in_theaters?apikey=0df993c66c0c636e29ecbb5344252a4a&start=0&count=20").then((response) {
 
       final List subjects = response.data["subjects"];
 
